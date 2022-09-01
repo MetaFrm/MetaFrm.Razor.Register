@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MetaFrm.Razor</RootNamespace>
+    <AssemblyName>MetaFrm.Razor.Register</AssemblyName>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>MetaFrm.Razor.Register.net6.0</PackageId>
+    <Version>6.0.0</Version>
+    <Authors>dsun</Authors>
+    <Company>MetaFrm</Company>
+    <Copyright>Copyright 2022. DSUN all rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/dsuny/MetaFrm.Razor.Register</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dsuny/MetaFrm.Razor.Register</RepositoryUrl>
+    <PackageTags>meta;framework;dotnet;</PackageTags>
+	
+	<SourceRevisionId>build$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss:fffZ"))</SourceRevisionId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\Register.razor.cs" Link="Register.razor.cs" />
+    <Compile Include="..\src\ViewModels\RegisterViewModel.cs" Link="ViewModels\RegisterViewModel.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MetaFrm.Core.net6.0" Version="6.0.0.4" />
+    <PackageReference Include="MetaFrm.Razor.Essentials.net6.0" Version="6.0.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+</Project>
