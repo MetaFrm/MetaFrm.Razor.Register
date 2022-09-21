@@ -75,20 +75,48 @@
                                     I have read and agree to MetaFreamwork’s
                                     @if (Factory.Platform == DevicePlatform.Web || Factory.Platform == DevicePlatform.WinForms || Factory.Platform == DevicePlatform.WPF)
                                     {
-                                        <a href="@this.TermsOfServiceUrl" target="_blank">Terms of Service </a>
+                                        @if (this.TermsOfServiceUrl.IsNullOrEmpty())
+                                        {
+                                            <a href="#">Terms of Service </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@this.TermsOfServiceUrl" target="_blank">Terms of Service </a>
+                                        }
                                     }
                                     else
                                     {
-                                        <a @onclick="() => this.OnLinkClick(this.TermsOfServiceUrl)" href="">Terms of Service </a>
+                                        @if (this.TermsOfServiceUrl.IsNullOrEmpty())
+                                        {
+                                            <a href="#">Terms of Service </a>
+                                        }
+                                        else
+                                        {
+                                            <a @onclick="() => this.OnLinkClick(this.TermsOfServiceUrl)" href="">Terms of Service </a>
+                                        }
                                     }
                                     and
                                     @if (Factory.Platform == DevicePlatform.Web || Factory.Platform == DevicePlatform.WinForms || Factory.Platform == DevicePlatform.WPF)
                                     {
-                                        <a href="@this.PrivacyPolicyUrl" target="_blank"> Privacy Policy.</a>
+                                        @if (this.TermsOfServiceUrl.IsNullOrEmpty())
+                                        {
+                                            <a href="#"> Privacy Policy.</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@this.PrivacyPolicyUrl" target="_blank"> Privacy Policy.</a>
+                                        }
                                     }
                                     else
                                     {
-                                        <a @onclick="() => this.OnLinkClick(this.PrivacyPolicyUrl)" href=""> Privacy Policy.</a>
+                                        @if (this.TermsOfServiceUrl.IsNullOrEmpty())
+                                        {
+                                            <a href="#"> Privacy Policy.</a>
+                                        }
+                                        else
+                                        {
+                                            <a @onclick="() => this.OnLinkClick(this.PrivacyPolicyUrl)" href=""> Privacy Policy.</a>
+                                        }
                                     }
                                 </span>
                             </Control>
