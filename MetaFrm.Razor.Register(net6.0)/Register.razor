@@ -23,7 +23,7 @@
                 @if (!this.RegisterViewModel.AccessCodeVisible)
                 {
                     <div class="row">
-                        <FieldControl Label="Email address" CssClassDiv="pb-2 col-md-6">
+                        <FieldControl Label="Email address">
                             <Control>
                                 <InputText id="email" class="form-control col-md-6" placeholder="Email address"
                                        @bind-Value="this.RegisterViewModel.Email" @onkeydown="@EmailKeydown"
@@ -31,7 +31,7 @@
                                 <ValidationMessage For="@(()=>this.RegisterViewModel.Email)" />
                             </Control>
                         </FieldControl>
-                        <FieldControl Label="Nickname" CssClassDiv="pb-2 col-md-6">
+                        <FieldControl Label="Nickname">
                             <Control>
                                 <InputText id="nickname" class="form-control" placeholder="* Nickname" @bind-Value="this.RegisterViewModel.Nickname" @onkeydown="@NicknameKeydown" disabled="@this.RegisterViewModel.AccessCodeVisible" />
                                 <ValidationMessage For="@(()=>this.RegisterViewModel.Nickname)" />
@@ -39,13 +39,13 @@
                         </FieldControl>
                     </div>
                     <div class="row">
-                        <FieldControl Label="Full name" CssClassDiv="py-2 col-md-6">
+                        <FieldControl Label="Full name">
                             <Control>
                                 <InputText id="fullname" class="form-control" placeholder="* Full name" @bind-Value="this.RegisterViewModel.Fullname" @onkeydown="@FullnameKeydown" disabled="@this.RegisterViewModel.AccessCodeVisible" />
                                 <ValidationMessage For="@(()=>this.RegisterViewModel.Fullname)" />
                             </Control>
                         </FieldControl>
-                        <FieldControl Label="Phone Number" CssClassDiv="py-2 col-md-6">
+                        <FieldControl Label="Phone Number">
                             <Control>
                                 <InputText id="phonenumber" class="form-control" placeholder="* Phone Number" @bind-Value="this.RegisterViewModel.PhoneNumber" @onkeydown="@PhonenumberKeydown" disabled="@this.RegisterViewModel.AccessCodeVisible" />
                                 <ValidationMessage For="@(()=>this.RegisterViewModel.PhoneNumber)" />
@@ -53,13 +53,13 @@
                         </FieldControl>
                     </div>
                     <div class="row pb-2">
-                        <FieldControl Label="Password" CssClassDiv="py-2 col-md-6">
+                        <FieldControl Label="Password">
                             <Control>
                                 <InputText id="password" type="password" class="form-control" placeholder="* Password" @bind-Value="this.RegisterViewModel.Password" @onkeydown="@PasswordKeydown" disabled="@this.RegisterViewModel.AccessCodeVisible" />
                                 <ValidationMessage For="@(()=>this.RegisterViewModel.Password)" />
                             </Control>
                         </FieldControl>
-                        <FieldControl Label="Repeat Password" CssClassDiv="py-2 col-md-6">
+                        <FieldControl Label="Repeat Password">
                             <Control>
                                 <InputText id="repeatpassword" type="password" class="form-control" placeholder="* Repeat Password" @bind-Value="this.RegisterViewModel.RepeatPassword" @onkeydown="@RepeatPasswordKeydown" disabled="@this.RegisterViewModel.AccessCodeVisible" />
                                 <ValidationMessage For="@(()=>this.RegisterViewModel.RepeatPassword)" />
@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="row pb-0">
-                        <FieldControl Label="" CssClassDiv="py-2 col-md-12" IsColon="false">
+                        <FieldControl Label="" CssClassAppend="py-2 col-md-12" IsColon="false">
                             <Control>
                                 <InputCheckbox id="agreelabel" class="form-check-input small" type="checkbox" @bind-Value="this.RegisterViewModel.Agree" disabled="@this.RegisterViewModel.AccessCodeVisible" />
                                 <span class="form-check-label small" for="agreelabel">
@@ -123,8 +123,8 @@
                         </FieldControl>
                     </div>
                     <div class="row pb-2">
-                        <FieldControl Label="" CssClassDiv="py-2 col-md-6" IsColon="false" Value="@("")"></FieldControl>
-                        <FieldControl Label="" CssClassDiv="py-2 col-md-6" IsColon="false">
+                        <FieldControl Label="" IsColon="false" Value="@("")"></FieldControl>
+                        <FieldControl Label="" IsColon="false">
                             <Control>
                                 <button type="submit" class="btn btn-primary btn-block w-100" disabled="@(this.RegisterViewModel.AccessCodeVisible || !this.RegisterViewModel.Agree)"><span class="oi oi-pencil" /> Register</button>
                             </Control>
@@ -134,12 +134,12 @@
                 else
                 {
                     <div class="row pb-0">
-                        <FieldControl Label="Remaining time" CssClassDiv="col-md-6" CssClassLabel="text-center" IsColon="false">
+                        <FieldControl Label="Remaining time" CssClassLabel="text-center" IsColon="false">
                             <Control>
                                 <div class="text-center">@($"{this.RemainTime.ToString("hh\\:mm\\:ss")}")</div>
                             </Control>
                         </FieldControl>
-                        <FieldControl Label="Email Verification Code" CssClassDiv="col-md-6" IsColon="false">
+                        <FieldControl Label="Email Verification Code" IsColon="false">
                             <Control>
                                 <input id="inputaccesscode" type="text" class="form-control @(this.RegisterViewModel.AccessCodeConfirmVisible && !this.RegisterViewModel.IsBusy?"is-valid":"is-invalid")" placeholder="Access Code"
                                    @bind-value="this.RegisterViewModel.InputAccessCode" @bind-value:event="oninput" @onkeydown="@InputAccessCodeKeydown" disabled="@(!this.RegisterViewModel.AccessCodeVisible && !this.RegisterViewModel.IsBusy)" />
@@ -147,8 +147,8 @@
                         </FieldControl>
                     </div>
                     <div class="row">
-                        <FieldControl Label="" CssClassDiv="col-md-6" IsColon="false" Value="@("")"></FieldControl>
-                        <FieldControl Label=" " CssClassDiv="col-md-6" IsColon="false">
+                        <FieldControl Label="" IsColon="false" Value="@("")"></FieldControl>
+                        <FieldControl Label="" IsColon="false">
                             <Control>
                                 <button type="button" class="btn btn-primary btn-block w-100" @onclick="OnRegisterClick" disabled="@(!this.RegisterViewModel.AccessCodeConfirmVisible && !this.RegisterViewModel.IsBusy)">Confirm</button>
                             </Control>
