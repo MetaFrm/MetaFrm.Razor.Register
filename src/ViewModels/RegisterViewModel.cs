@@ -49,7 +49,6 @@ namespace MetaFrm.Razor.ViewModels
         /// <summary>
         /// PhoneNumber
         /// </summary>
-        [Required]
         [Display(Name = "Phone Number")]
         public string? PhoneNumber { get; set; }
 
