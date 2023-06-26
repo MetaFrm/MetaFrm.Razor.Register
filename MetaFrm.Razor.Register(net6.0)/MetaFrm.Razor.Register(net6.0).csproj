@@ -46,6 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MetaFrm.Core.net6.0" Version="6.0.0.42" />
     <PackageReference Include="MetaFrm.Razor.Essentials.net6.0" Version="6.0.0.42" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.18" />
   </ItemGroup>
