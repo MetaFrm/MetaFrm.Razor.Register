@@ -32,15 +32,11 @@ namespace MetaFrm.Razor
 
         private TimeSpan RemainTime { get; set; }
 
-        Auth.AuthenticationStateProvider AuthenticationState;
-
         /// <summary>
         /// OnInitialized
         /// </summary>
         protected override void OnInitialized()
         {
-            this.AuthenticationState ??= (this.AuthStateProvider as Auth.AuthenticationStateProvider) ?? (Auth.AuthenticationStateProvider)Factory.CreateInstance(typeof(Auth.AuthenticationStateProvider));
-
             try
             {
                 this.TermsOfServiceUrl = this.GetAttribute("TermsOfServiceUrl");
@@ -68,7 +64,7 @@ namespace MetaFrm.Razor
 
             if (firstRender)
             {
-                if (this.AuthenticationState.IsLogin())
+                if (this.AuthState.IsLogin())
                     this.Navigation?.NavigateTo("/", true);
 
                 this.JSRuntime?.InvokeVoidAsync("ElementFocus", "email");
@@ -87,7 +83,7 @@ namespace MetaFrm.Razor
             {
                 this.RegisterViewModel.IsBusy = true;
 
-                if (!this.AuthenticationState.IsLogin())
+                if (!this.AuthState.IsLogin())
                 {
                     Response response;
 
