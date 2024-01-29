@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build_6.0.yml = .github\workflows\build_6.0.yml
 		.github\workflows\build_7.0.yml = .github\workflows\build_7.0.yml
+		.github\workflows\build_8.0.yml = .github\workflows\build_8.0.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{5F007C82-B02D-4AEE-B36D-06D82E9964D4}"
@@ -32,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaFrm.Razor.Register(net7.0)", "MetaFrm.Razor.Register(net7.0)\MetaFrm.Razor.Register(net7.0).csproj", "{EDAC1739-B1E2-4054-BBB7-A6FAB19E920C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaFrm.Razor.Register(net8.0)", "MetaFrm.Razor.Register(net8.0)\MetaFrm.Razor.Register(net8.0).csproj", "{FBF82E12-FFEB-478D-935F-E8D82617954D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +49,10 @@ Global
 		{EDAC1739-B1E2-4054-BBB7-A6FAB19E920C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDAC1739-B1E2-4054-BBB7-A6FAB19E920C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDAC1739-B1E2-4054-BBB7-A6FAB19E920C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBF82E12-FFEB-478D-935F-E8D82617954D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF82E12-FFEB-478D-935F-E8D82617954D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF82E12-FFEB-478D-935F-E8D82617954D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF82E12-FFEB-478D-935F-E8D82617954D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
