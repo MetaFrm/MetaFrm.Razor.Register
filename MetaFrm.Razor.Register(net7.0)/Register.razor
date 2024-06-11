@@ -47,7 +47,7 @@
                         </FieldControl>
                         <FieldControl Label="Phone Number">
                             <Control>
-                                <InputText id="phonenumber" class="form-control" placeholder="* Phone Number" @bind-Value="this.RegisterViewModel.PhoneNumber" @onkeydown="@PhonenumberKeydown" disabled="@this.RegisterViewModel.AccessCodeVisible" />
+                                <InputText id="phonenumber" class="form-control" placeholder="Phone Number" @bind-Value="this.RegisterViewModel.PhoneNumber" @onkeydown="@PhonenumberKeydown" disabled="@this.RegisterViewModel.AccessCodeVisible" />
                                 <ValidationMessage For="@(()=>this.RegisterViewModel.PhoneNumber)" />
                             </Control>
                         </FieldControl>
