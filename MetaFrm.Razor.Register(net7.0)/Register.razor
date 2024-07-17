@@ -100,22 +100,22 @@
                                     {
                                         @if (this.TermsOfServiceUrl.IsNullOrEmpty())
                                         {
-                                            <a href="#"> @Localization["개인 정보 보호 정책"].</a>
+                                            <a href="#"> @Localization["개인정보 취급방침"].</a>
                                         }
                                         else
                                         {
-                                            <a href="@this.PrivacyPolicyUrl" target="_blank"> @Localization["개인 정보 보호 정책"].</a>
+                                            <a href="@this.PrivacyPolicyUrl" target="_blank"> @Localization["개인정보 취급방침"].</a>
                                         }
                                     }
                                     else
                                     {
                                         @if (this.TermsOfServiceUrl.IsNullOrEmpty())
                                         {
-                                            <a href="#"> @Localization["개인 정보 보호 정책"].</a>
+                                            <a href="#"> @Localization["개인정보 취급방침"].</a>
                                         }
                                         else
                                         {
-                                            <a @onclick="() => this.OnLinkClick(this.PrivacyPolicyUrl)" href=""> @Localization["개인 정보 보호 정책"].</a>
+                                            <a @onclick="() => this.OnLinkClick(this.PrivacyPolicyUrl)" href=""> @Localization["개인정보 취급방침"].</a>
                                         }
                                     }
                                 </span>
