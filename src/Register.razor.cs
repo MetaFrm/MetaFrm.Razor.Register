@@ -111,7 +111,7 @@ namespace MetaFrm.Razor
                             this.RegisterViewModel.Password = string.Empty;
                             this.RegisterViewModel.RepeatPassword = string.Empty;
 
-                            this.ToastShow("Register", "Your membership registration is complete.", ToastDuration.Long);
+                            this.ToastShow("Register", this.Localization["회원가입이 완료되었습니다."], ToastDuration.Long);
 
                             this.OnAction(this, new MetaFrmEventArgs { Action = "Login" });
                             return true;
