@@ -1,5 +1,6 @@
 ﻿using MetaFrm.MVVM;
-using System.ComponentModel.DataAnnotations;
+using MetaFrm.Razor.Essentials.ComponentModel.DataAnnotations;
+using DisplayAttribute = System.ComponentModel.DataAnnotations.DisplayAttribute;
 
 namespace MetaFrm.Razor.ViewModels
 {
@@ -11,6 +12,7 @@ namespace MetaFrm.Razor.ViewModels
         /// <summary>
         /// Email
         /// </summary>
+        [Display(Name = "이메일")]
         [Required]
         [EmailAddress]
         public string? Email { get; set; }
@@ -18,6 +20,7 @@ namespace MetaFrm.Razor.ViewModels
         /// <summary>
         /// Password
         /// </summary>
+        [Display(Name = "비밀번호")]
         [Required]
         [MinLength(6)]
         public string? Password { get; set; }
@@ -25,15 +28,16 @@ namespace MetaFrm.Razor.ViewModels
         /// <summary>
         /// RepeatPassword
         /// </summary>
+        [Display(Name = "비밀번호 반복")]
         [Required]
         [CompareAttribute("Password")]
-        [Display(Name = "Repeat Password")]
         [MinLength(6)]
         public string? RepeatPassword { get; set; }
 
         /// <summary>
         /// Nickname
         /// </summary>
+        [Display(Name = "별명")]
         [Required]
         [MinLength(3)]
         public string? Nickname { get; set; }
@@ -41,15 +45,15 @@ namespace MetaFrm.Razor.ViewModels
         /// <summary>
         /// Fullname
         /// </summary>
+        [Display(Name = "성명")]
         [Required]
-        [Display(Name = "Full name")]
         [MinLength(3)]
         public string? Fullname { get; set; }
 
         /// <summary>
         /// PhoneNumber
         /// </summary>
-        [Display(Name = "Phone Number")]
+        [Display(Name = "전화번호")]
         public string? PhoneNumber { get; set; }
 
         /// <summary>
