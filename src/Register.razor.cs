@@ -57,7 +57,6 @@ namespace MetaFrm.Razor
         /// OnAfterRender
         /// </summary>
         /// <param name="firstRender"></param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2012:올바르게 ValueTasks 사용", Justification = "<보류 중>")]
         protected override void OnAfterRender(bool firstRender)
         {
             base.OnAfterRender(firstRender);
@@ -67,12 +66,12 @@ namespace MetaFrm.Razor
                 if (this.AuthState.IsLogin())
                     this.Navigation?.NavigateTo("/", true);
 
-                this.JSRuntime?.InvokeVoidAsync("ElementFocus", "email");
+                ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "email");
             }
 
             if (this.RegisterViewModel.AccessCodeVisible && !this._isFocusElement)
             {
-                this.JSRuntime?.InvokeVoidAsync("ElementFocus", "inputaccesscode");
+                ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "inputaccesscode");
                 this._isFocusElement = true;
             }
         }
@@ -136,9 +135,8 @@ namespace MetaFrm.Razor
         private async Task OnClickFunctionAsync(string action)
         {
             await Task.Delay(100);
-#pragma warning disable CA2012 // 올바르게 ValueTasks 사용
-            this.JSRuntime?.InvokeVoidAsync("ElementFocus", "inputaccesscode");
-#pragma warning restore CA2012 // 올바르게 ValueTasks 사용
+
+            ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "inputaccesscode");
         }
 
 
@@ -202,36 +200,28 @@ namespace MetaFrm.Razor
         {
             if (args.Key == "Enter" && !this.RegisterViewModel.Email.IsNullOrEmpty())
             {
-#pragma warning disable CA2012 // 올바르게 ValueTasks 사용
-                this.JSRuntime?.InvokeVoidAsync("ElementFocus", "nickname");
-#pragma warning restore CA2012 // 올바르게 ValueTasks 사용
+                ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "nickname");
             }
         }
         private void NicknameKeydown(KeyboardEventArgs args)
         {
             if (args.Key == "Enter" && !this.RegisterViewModel.Nickname.IsNullOrEmpty())
             {
-#pragma warning disable CA2012 // 올바르게 ValueTasks 사용
-                this.JSRuntime?.InvokeVoidAsync("ElementFocus", "fullname");
-#pragma warning restore CA2012 // 올바르게 ValueTasks 사용
+                ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "fullname");
             }
         }
         private void FullnameKeydown(KeyboardEventArgs args)
         {
             if (args.Key == "Enter" && !this.RegisterViewModel.Fullname.IsNullOrEmpty())
             {
-#pragma warning disable CA2012 // 올바르게 ValueTasks 사용
-                this.JSRuntime?.InvokeVoidAsync("ElementFocus", "phonenumber");
-#pragma warning restore CA2012 // 올바르게 ValueTasks 사용
+                ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "phonenumber");
             }
         }
         private void PhonenumberKeydown(KeyboardEventArgs args)
         {
             if (args.Key == "Enter" && !this.RegisterViewModel.PhoneNumber.IsNullOrEmpty())
             {
-#pragma warning disable CA2012 // 올바르게 ValueTasks 사용
-                this.JSRuntime?.InvokeVoidAsync("ElementFocus", "password");
-#pragma warning restore CA2012 // 올바르게 ValueTasks 사용
+                ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "password");
             }
         }
 
@@ -239,18 +229,14 @@ namespace MetaFrm.Razor
         {
             if (args.Key == "Enter" && !this.RegisterViewModel.Password.IsNullOrEmpty())
             {
-#pragma warning disable CA2012 // 올바르게 ValueTasks 사용
-                this.JSRuntime?.InvokeVoidAsync("ElementFocus", "repeatpassword");
-#pragma warning restore CA2012 // 올바르게 ValueTasks 사용
+                ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "repeatpassword");
             }
         }
         private void RepeatPasswordKeydown(KeyboardEventArgs args)
         {
             if (args.Key == "Enter" && !this.RegisterViewModel.RepeatPassword.IsNullOrEmpty())
             {
-#pragma warning disable CA2012 // 올바르게 ValueTasks 사용
-                this.JSRuntime?.InvokeVoidAsync("ElementFocus", "agreelabel");
-#pragma warning restore CA2012 // 올바르게 ValueTasks 사용
+                ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "agreelabel");
             }
         }
 
