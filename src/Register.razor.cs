@@ -18,7 +18,7 @@ namespace MetaFrm.Razor
     /// </summary>
     public partial class Register
     {
-        internal RegisterViewModel RegisterViewModel { get; set; } = new RegisterViewModel();
+        internal RegisterViewModel RegisterViewModel { get; set; } = new();
 
         private bool _isFocusElement = false;//등록 버튼 클릭하고 AccessCode로 포커스가 한번만 가도록
 
@@ -28,25 +28,29 @@ namespace MetaFrm.Razor
 
         private string? PrivacyPolicyUrl { get; set; }
 
-        private TimeSpan RemainTimeOrg { get; set; } = new TimeSpan(0, 5, 0);
+        private TimeSpan RemainingTimeOrg { get; set; } = new TimeSpan(0, 5, 0);
 
-        private TimeSpan RemainTime { get; set; }
+        private TimeSpan RemainingTime { get; set; }
 
         /// <summary>
         /// OnInitialized
         /// </summary>
         protected override void OnInitialized()
         {
+            base.OnInitialized();
+
+            this.RegisterViewModel = this.CreateViewModel<RegisterViewModel>();
+
             try
             {
-                this.TermsOfServiceUrl = this.GetAttribute("TermsOfServiceUrl");
-                this.PrivacyPolicyUrl = this.GetAttribute("PrivacyPolicyUrl");
+                this.TermsOfServiceUrl = this.GetAttribute(nameof(this.TermsOfServiceUrl));
+                this.PrivacyPolicyUrl = this.GetAttribute(nameof(this.PrivacyPolicyUrl));
 
-                string[] time = this.GetAttribute("RemainingTime").Split(":");
+                string[] time = this.GetAttribute(nameof(this.RemainingTime)).Split(":");
 
-                this.RemainTimeOrg = new TimeSpan(time[0].ToInt(), time[1].ToInt(), time[2].ToInt());
+                this.RemainingTimeOrg = new TimeSpan(time[0].ToInt(), time[1].ToInt(), time[2].ToInt());
 
-                this.RemainTime = new TimeSpan(this.RemainTimeOrg.Ticks);
+                this.RemainingTime = new TimeSpan(this.RemainingTimeOrg.Ticks);
             }
             catch (Exception)
             {
@@ -172,16 +176,16 @@ namespace MetaFrm.Razor
         {
             try
             {
-                this.RemainTime = this.RemainTime.Add(new TimeSpan(0, 0, -1));
+                this.RemainingTime = this.RemainingTime.Add(new TimeSpan(0, 0, -1));
 
-                if (this.RemainTime.Ticks <= 0)
+                if (this.RemainingTime.Ticks <= 0)
                 {
                     this.RegisterViewModel.AccessCodeVisible = false;
                     this._isFocusElement = true;
                     this.RegisterViewModel.AccessCode = null;
                     this.RegisterViewModel.InputAccessCode = null;
                     this.RegisterViewModel.AccessCodeConfirmVisible = false;
-                    this.RemainTime = new TimeSpan(this.RemainTimeOrg.Ticks);
+                    this.RemainingTime = new TimeSpan(this.RemainingTimeOrg.Ticks);
                     this.timer.Stop();
                 }
 
