@@ -18,19 +18,16 @@ namespace MetaFrm.Razor
     /// </summary>
     public partial class Register
     {
-        internal RegisterViewModel RegisterViewModel { get; set; } = new();
-
+        private RegisterViewModel RegisterViewModel { get; set; } = new(null);
         private bool _isFocusElement = false;//등록 버튼 클릭하고 AccessCode로 포커스가 한번만 가도록
 
-        [Inject] IBrowser? Browser { get; set; }
-
+        [Inject]
+        IBrowser? Browser { get; set; }
         private string? TermsOfServiceUrl { get; set; }
-
         private string? PrivacyPolicyUrl { get; set; }
-
         private TimeSpan RemainingTimeOrg { get; set; } = new TimeSpan(0, 5, 0);
-
         private TimeSpan RemainingTime { get; set; }
+        private bool IsLoadAutoFocus;
 
         /// <summary>
         /// OnInitialized
@@ -47,10 +44,10 @@ namespace MetaFrm.Razor
                 this.PrivacyPolicyUrl = this.GetAttribute(nameof(this.PrivacyPolicyUrl));
 
                 string[] time = this.GetAttribute(nameof(this.RemainingTime)).Split(":");
-
                 this.RemainingTimeOrg = new TimeSpan(time[0].ToInt(), time[1].ToInt(), time[2].ToInt());
 
                 this.RemainingTime = new TimeSpan(this.RemainingTimeOrg.Ticks);
+                this.IsLoadAutoFocus = this.GetAttributeBool(nameof(this.IsLoadAutoFocus));
             }
             catch (Exception)
             {
@@ -70,7 +67,10 @@ namespace MetaFrm.Razor
                 if (this.AuthState.IsLogin())
                     this.Navigation?.NavigateTo("/", true);
 
-                ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "email");
+                if (this.IsLoadAutoFocus)
+                {
+                    ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "email");
+                }
             }
 
             if (this.RegisterViewModel.AccessCodeVisible && !this._isFocusElement)
@@ -82,50 +82,52 @@ namespace MetaFrm.Razor
 
         private async Task<bool> OnRegisterClick()
         {
+            Response response;
+
+            if (this.RegisterViewModel.Email.IsNullOrEmpty()
+                || this.RegisterViewModel.Password == null || this.RegisterViewModel.Password.IsNullOrEmpty()
+                || this.RegisterViewModel.RepeatPassword == null || this.RegisterViewModel.RepeatPassword.IsNullOrEmpty()
+                || this.RegisterViewModel.Password != this.RegisterViewModel.RepeatPassword
+                || this.RegisterViewModel.InputAccessCode.IsNullOrEmpty()
+                || this.RegisterViewModel.AccessCode != this.RegisterViewModel.InputAccessCode)
+                return false;
+            if (this.AuthState.IsLogin()) return false;
+            if (this.RegisterViewModel.IsBusy) return false;
+
             try
             {
                 this.RegisterViewModel.IsBusy = true;
 
-                if (!this.AuthState.IsLogin())
+                ServiceData serviceData = new()
                 {
-                    Response response;
+                    TransactionScope = true,
+                    Token = Factory.AccessKey
+                };
+                serviceData["1"].CommandText = this.GetAttribute("Create");
+                serviceData["1"].AddParameter("EMAIL", DbType.NVarChar, 100, this.RegisterViewModel.Email);
+                serviceData["1"].AddParameter("ACCESS_NUMBER", DbType.NVarChar, 4000, this.RegisterViewModel.Password.ComputeHash());
+                serviceData["1"].AddParameter("NICKNAME", DbType.NVarChar, 50, this.RegisterViewModel.Nickname);
+                serviceData["1"].AddParameter("FULLNAME", DbType.NVarChar, 200, this.RegisterViewModel.Fullname);
+                serviceData["1"].AddParameter("PHONENUMBER", DbType.NVarChar, 50, this.RegisterViewModel.PhoneNumber);
+                serviceData["1"].AddParameter("ACCESS_CODE", DbType.NVarChar, 10, this.RegisterViewModel.InputAccessCode);
 
-                    if (!this.RegisterViewModel.Email.IsNullOrEmpty()
-                        && this.RegisterViewModel.Password != null && !this.RegisterViewModel.Password.IsNullOrEmpty() && !this.RegisterViewModel.RepeatPassword.IsNullOrEmpty()
-                        && !this.RegisterViewModel.InputAccessCode.IsNullOrEmpty() && this.RegisterViewModel.AccessCode == this.RegisterViewModel.InputAccessCode)
+                response = await this.ServiceRequestAsync(serviceData);
+
+                if (response.Status == Status.OK)
+                {
+                    this.RegisterViewModel.Password = string.Empty;
+                    this.RegisterViewModel.RepeatPassword = string.Empty;
+
+                    this.ToastShow("회원가입", this.Localization["회원가입이 완료되었습니다."], ToastDuration.Long);
+
+                    this.OnAction(this, new MetaFrmEventArgs { Action = "Login" });
+                    return true;
+                }
+                else
+                {
+                    if (response.Message != null)
                     {
-                        ServiceData serviceData = new()
-                        {
-                            TransactionScope = true,
-                            Token = Factory.AccessKey
-                        };
-                        serviceData["1"].CommandText = this.GetAttribute("Create");
-                        serviceData["1"].AddParameter("EMAIL", DbType.NVarChar, 100, this.RegisterViewModel.Email);
-                        serviceData["1"].AddParameter("ACCESS_NUMBER", DbType.NVarChar, 4000, this.RegisterViewModel.Password.ComputeHash());
-                        serviceData["1"].AddParameter("NICKNAME", DbType.NVarChar, 50, this.RegisterViewModel.Nickname);
-                        serviceData["1"].AddParameter("FULLNAME", DbType.NVarChar, 200, this.RegisterViewModel.Fullname);
-                        serviceData["1"].AddParameter("PHONENUMBER", DbType.NVarChar, 50, this.RegisterViewModel.PhoneNumber);
-                        serviceData["1"].AddParameter("ACCESS_CODE", DbType.NVarChar, 10, this.RegisterViewModel.InputAccessCode);
-
-                        response = await this.ServiceRequestAsync(serviceData);
-
-                        if (response.Status == Status.OK)
-                        {
-                            this.RegisterViewModel.Password = string.Empty;
-                            this.RegisterViewModel.RepeatPassword = string.Empty;
-
-                            this.ToastShow("Register", this.Localization["회원가입이 완료되었습니다."], ToastDuration.Long);
-
-                            this.OnAction(this, new MetaFrmEventArgs { Action = "Login" });
-                            return true;
-                        }
-                        else
-                        {
-                            if (response.Message != null)
-                            {
-                                this.ModalShow("Register", response.Message, new() { { "Ok", Btn.Warning } }, EventCallback.Factory.Create<string>(this, OnClickFunctionAsync));
-                            }
-                        }
+                        this.ModalShow("회원가입", response.Message, new() { { "Ok", Btn.Warning } }, EventCallback.Factory.Create<string>(this, OnClickFunctionAsync));
                     }
                 }
             }

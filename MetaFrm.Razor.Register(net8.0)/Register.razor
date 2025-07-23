@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
             <EditForm Model="@this.RegisterViewModel" OnValidSubmit="this.HandleValidSubmitAsync" OnInvalidSubmit="this.HandleInvalidSubmit">
-                <DataAnnotationsValidator />
+                <MetaFrmDataAnnotationsValidator />
 
                 @if (!this.RegisterViewModel.AccessCodeVisible)
                 {
@@ -77,7 +77,7 @@
                                     {
                                         @if (this.TermsOfServiceUrl.IsNullOrEmpty())
                                         {
-                                            <a href="#">@Localization["서비스 약관"] </a>
+                                            <a href="javascript:void(0)">@Localization["서비스 약관"] </a>
                                         }
                                         else
                                         {
@@ -88,7 +88,7 @@
                                     {
                                         @if (this.TermsOfServiceUrl.IsNullOrEmpty())
                                         {
-                                            <a href="#">@Localization["서비스 약관"] </a>
+                                            <a href="javascript:void(0)">@Localization["서비스 약관"] </a>
                                         }
                                         else
                                         {
@@ -100,7 +100,7 @@
                                     {
                                         @if (this.TermsOfServiceUrl.IsNullOrEmpty())
                                         {
-                                            <a href="#"> @Localization["개인정보 취급방침"].</a>
+                                            <a href="javascript:void(0)"> @Localization["개인정보 취급방침"].</a>
                                         }
                                         else
                                         {
@@ -111,7 +111,7 @@
                                     {
                                         @if (this.TermsOfServiceUrl.IsNullOrEmpty())
                                         {
-                                            <a href="#"> @Localization["개인정보 취급방침"].</a>
+                                            <a href="javascript:void(0)"> @Localization["개인정보 취급방침"].</a>
                                         }
                                         else
                                         {

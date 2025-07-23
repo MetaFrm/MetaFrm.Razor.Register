@@ -1,5 +1,6 @@
 ﻿using MetaFrm.MVVM;
 using MetaFrm.Razor.Essentials.ComponentModel.DataAnnotations;
+using Microsoft.Extensions.Localization;
 using DisplayAttribute = System.ComponentModel.DataAnnotations.DisplayAttribute;
 
 namespace MetaFrm.Razor.ViewModels
@@ -94,5 +95,15 @@ namespace MetaFrm.Razor.ViewModels
         /// AccessCodeConfirmVisible
         /// </summary>
         public bool AccessCodeConfirmVisible { get; set; }
+
+        /// <summary>
+        /// RegisterViewModel
+        /// </summary>
+        public RegisterViewModel() : base() { }
+
+        /// <summary>
+        /// RegisterViewModel
+        /// </summary>
+        public RegisterViewModel(IStringLocalizer? localization) : base(localization) { }
     }
 }
