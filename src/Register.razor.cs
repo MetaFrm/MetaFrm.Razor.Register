@@ -249,6 +249,8 @@ namespace MetaFrm.Razor
 
         private async void OnLinkClick(string? url)
         {
+            if (this.RegisterViewModel.IsBusy) return;
+
             try
             {
                 this.RegisterViewModel.IsBusy = true;
