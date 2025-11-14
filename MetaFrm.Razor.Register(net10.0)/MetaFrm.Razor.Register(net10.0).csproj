@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>MetaFrm.Razor</RootNamespace>
     <AssemblyName>MetaFrm.Razor.Register</AssemblyName>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>MetaFrm.Razor.Register.net8.0</PackageId>
-    <Version>8.0.4.70</Version>
+    <PackageId>MetaFrm.Razor.Register.net10.0</PackageId>
+    <Version>10.0.0.0</Version>
     <Authors>dsun</Authors>
     <Company>Meta Framework</Company>
     <Copyright>Copyright 2025. dsun all rights reserved.</Copyright>
@@ -38,9 +38,9 @@
     <SupportedPlatform Include="browser" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MetaFrm.Core.net8.0" Version="8.0.4.70" />
-    <PackageReference Include="MetaFrm.Razor.Essentials.net8.0" Version="8.0.4.70" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.22" />
+    <PackageReference Include="MetaFrm.Core.net10.0" Version="10.0.0.0" />
+    <PackageReference Include="MetaFrm.Razor.Essentials.net10.0" Version="10.0.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon.png">
