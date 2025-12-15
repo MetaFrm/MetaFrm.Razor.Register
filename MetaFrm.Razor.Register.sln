@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.0.11205.157 d18.0
+VisualStudioVersion = 18.0.11205.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BD36A0D3-2697-4EC6-8527-8914805FDEFF}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,8 +13,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{B2D68190-1229-4A46-B7F5-6B263E0C5676}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build_10.0.yml = .github\workflows\build_10.0.yml
-		.github\workflows\build_8.0.yml = .github\workflows\build_8.0.yml
-		.github\workflows\build_9.0.yml = .github\workflows\build_9.0.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{5F007C82-B02D-4AEE-B36D-06D82E9964D4}"
@@ -29,10 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", 
 		src\ViewModels\RegisterViewModel.cs = src\ViewModels\RegisterViewModel.cs
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaFrm.Razor.Register(net8.0)", "MetaFrm.Razor.Register(net8.0)\MetaFrm.Razor.Register(net8.0).csproj", "{FBF82E12-FFEB-478D-935F-E8D82617954D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaFrm.Razor.Register(net9.0)", "MetaFrm.Razor.Register(net9.0)\MetaFrm.Razor.Register(net9.0).csproj", "{0B52D06F-4B7E-43AA-B2C2-862064E1078D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaFrm.Razor.Register(net10.0)", "MetaFrm.Razor.Register(net10.0)\MetaFrm.Razor.Register(net10.0).csproj", "{720B9C81-0262-DEB5-D91F-430E9179F52B}"
 EndProject
 Global
@@ -41,14 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FBF82E12-FFEB-478D-935F-E8D82617954D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBF82E12-FFEB-478D-935F-E8D82617954D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBF82E12-FFEB-478D-935F-E8D82617954D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBF82E12-FFEB-478D-935F-E8D82617954D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B52D06F-4B7E-43AA-B2C2-862064E1078D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B52D06F-4B7E-43AA-B2C2-862064E1078D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B52D06F-4B7E-43AA-B2C2-862064E1078D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B52D06F-4B7E-43AA-B2C2-862064E1078D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{720B9C81-0262-DEB5-D91F-430E9179F52B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{720B9C81-0262-DEB5-D91F-430E9179F52B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{720B9C81-0262-DEB5-D91F-430E9179F52B}.Release|Any CPU.ActiveCfg = Release|Any CPU
