@@ -75,7 +75,7 @@
                                     @Localization["나는 읽고 동의합니다."]
                                     @if (Factory.Platform == DevicePlatform.Web || Factory.Platform == DevicePlatform.WinForms || Factory.Platform == DevicePlatform.WPF)
                                     {
-                                        @if (this.TermsOfServiceUrl.IsNullOrEmpty())
+                                        @if (string.IsNullOrEmpty(this.TermsOfServiceUrl))
                                         {
                                             <a href="javascript:void(0)">@Localization["서비스 약관"] </a>
                                         }
@@ -86,7 +86,7 @@
                                     }
                                     else
                                     {
-                                        @if (this.TermsOfServiceUrl.IsNullOrEmpty())
+                                        @if (string.IsNullOrEmpty(this.TermsOfServiceUrl))
                                         {
                                             <a href="javascript:void(0)">@Localization["서비스 약관"] </a>
                                         }
@@ -98,7 +98,7 @@
                                     ,
                                     @if (Factory.Platform == DevicePlatform.Web || Factory.Platform == DevicePlatform.WinForms || Factory.Platform == DevicePlatform.WPF)
                                     {
-                                        @if (this.TermsOfServiceUrl.IsNullOrEmpty())
+                                        @if (string.IsNullOrEmpty(this.TermsOfServiceUrl))
                                         {
                                             <a href="javascript:void(0)"> @Localization["개인정보 취급방침"].</a>
                                         }
@@ -109,7 +109,7 @@
                                     }
                                     else
                                     {
-                                        @if (this.TermsOfServiceUrl.IsNullOrEmpty())
+                                        @if (string.IsNullOrEmpty(this.TermsOfServiceUrl))
                                         {
                                             <a href="javascript:void(0)"> @Localization["개인정보 취급방침"].</a>
                                         }

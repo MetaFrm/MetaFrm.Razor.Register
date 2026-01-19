@@ -101,7 +101,7 @@ namespace MetaFrm.Razor
                 ServiceData serviceData = new()
                 {
                     TransactionScope = true,
-                    Token = Factory.AccessKey
+                    Token = Factory.ProjectService.Token
                 };
                 serviceData["1"].CommandText = this.GetAttribute("Create");
                 serviceData["1"].AddParameter("EMAIL", DbType.NVarChar, 100, this.RegisterViewModel.Email);
