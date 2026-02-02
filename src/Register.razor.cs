@@ -84,11 +84,11 @@ namespace MetaFrm.Razor
         {
             Response response;
 
-            if (this.RegisterViewModel.Email.IsNullOrEmpty()
-                || this.RegisterViewModel.Password == null || this.RegisterViewModel.Password.IsNullOrEmpty()
-                || this.RegisterViewModel.RepeatPassword == null || this.RegisterViewModel.RepeatPassword.IsNullOrEmpty()
+            if (string.IsNullOrEmpty(this.RegisterViewModel.Email)
+                || this.RegisterViewModel.Password == null || string.IsNullOrEmpty(this.RegisterViewModel.Password)
+                || this.RegisterViewModel.RepeatPassword == null || string.IsNullOrEmpty(this.RegisterViewModel.RepeatPassword)
                 || this.RegisterViewModel.Password != this.RegisterViewModel.RepeatPassword
-                || this.RegisterViewModel.InputAccessCode.IsNullOrEmpty()
+                || string.IsNullOrEmpty(this.RegisterViewModel.InputAccessCode)
                 || this.RegisterViewModel.AccessCode != this.RegisterViewModel.InputAccessCode)
                 return false;
             if (this.AuthState.IsLogin()) return false;
@@ -204,28 +204,28 @@ namespace MetaFrm.Razor
 
         private void EmailKeydown(KeyboardEventArgs args)
         {
-            if (args.Key == "Enter" && !this.RegisterViewModel.Email.IsNullOrEmpty())
+            if (args.Key == "Enter" && !string.IsNullOrEmpty(this.RegisterViewModel.Email))
             {
                 ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "nickname");
             }
         }
         private void NicknameKeydown(KeyboardEventArgs args)
         {
-            if (args.Key == "Enter" && !this.RegisterViewModel.Nickname.IsNullOrEmpty())
+            if (args.Key == "Enter" && !string.IsNullOrEmpty(this.RegisterViewModel.Nickname))
             {
                 ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "fullname");
             }
         }
         private void FullnameKeydown(KeyboardEventArgs args)
         {
-            if (args.Key == "Enter" && !this.RegisterViewModel.Fullname.IsNullOrEmpty())
+            if (args.Key == "Enter" && !string.IsNullOrEmpty(this.RegisterViewModel.Fullname))
             {
                 ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "phonenumber");
             }
         }
         private void PhonenumberKeydown(KeyboardEventArgs args)
         {
-            if (args.Key == "Enter" && !this.RegisterViewModel.PhoneNumber.IsNullOrEmpty())
+            if (args.Key == "Enter" && !string.IsNullOrEmpty(this.RegisterViewModel.PhoneNumber))
             {
                 ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "password");
             }
@@ -233,14 +233,14 @@ namespace MetaFrm.Razor
 
         private void PasswordKeydown(KeyboardEventArgs args)
         {
-            if (args.Key == "Enter" && !this.RegisterViewModel.Password.IsNullOrEmpty())
+            if (args.Key == "Enter" && !string.IsNullOrEmpty(this.RegisterViewModel.Password))
             {
                 ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "repeatpassword");
             }
         }
         private void RepeatPasswordKeydown(KeyboardEventArgs args)
         {
-            if (args.Key == "Enter" && !this.RegisterViewModel.RepeatPassword.IsNullOrEmpty())
+            if (args.Key == "Enter" && !string.IsNullOrEmpty(this.RegisterViewModel.RepeatPassword))
             {
                 ValueTask? _ = this.JSRuntime?.InvokeVoidAsync("ElementFocus", "agreelabel");
             }
