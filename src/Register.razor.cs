@@ -27,6 +27,7 @@ namespace MetaFrm.Razor
         private string? PrivacyPolicyUrl { get; set; }
         private TimeSpan RemainingTimeOrg { get; set; } = new TimeSpan(0, 5, 0);
         private TimeSpan RemainingTime { get; set; }
+        private string? BackGroundImage { get; set; }
         private bool IsLoadAutoFocus;
 
         /// <summary>
@@ -47,6 +48,9 @@ namespace MetaFrm.Razor
                 this.RemainingTimeOrg = new TimeSpan(time[0].ToInt(), time[1].ToInt(), time[2].ToInt());
 
                 this.RemainingTime = new TimeSpan(this.RemainingTimeOrg.Ticks);
+
+                this.BackGroundImage = this.GetAttribute(nameof(this.BackGroundImage));
+
                 this.IsLoadAutoFocus = this.GetAttributeBool(nameof(this.IsLoadAutoFocus));
             }
             catch (Exception)
